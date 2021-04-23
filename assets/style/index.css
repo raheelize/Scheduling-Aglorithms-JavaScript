@@ -1,0 +1,42 @@
+.app{
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 1%;
+}
+.info{
+	float: right;
+	font-size: 15px;
+	background-color:whitesmoke;
+	border-radius:20px;
+}
+body{
+	margin-top: 0%;
+	color: black;
+	background: rgb(243, 243, 243);
+}
+.btn-insert{
+	color:white;
+}
+.proccess{
+	display: flex;
+}
+.arrive-time{
+	margin-left: 2%;
+	width: 38%;
+}
+.birth-time{
+	margin-left: 2%;
+	width: 38%; 
+}
+.delete{
+	margin-left: 2%;
+}
+
+.chart{
+	width: 90%;
+	height: 400px;
+	margin-left: 5%;
+}
+.title{
+	font-weight: bold; 
+}

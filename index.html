@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>OS-A3</title>
+		<link rel="stylesheet" type="text/css" href="assets/style/index.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/style/Chart.min.css">
+	</head>
+	<body id="body">
+		<div id="app" class="app">
+			<section>
+				<h1>Scheduling Aglorithms</h1><hr>
+				<div >
+				<h4>OS - Assignment3</h4>
+				<p ><b>Submitted By:</b> Raheel Asghar - BSCS(9th) - 04071613023 <b>Submitted To:</b> Dr. Ghazanfar Farooq<p>
+				</div>
+				
+			</section>
+			<hr>
+			<div style = "color:red; border:1px solid red; padding: 2px;" class="alert alert-danger alrt" role="alert" v-show="error">
+				{{error}}
+			</div>
+			<div v-for="warn in warning">
+				<div class="alert alert-warning alrt" role="alert" v-show="warning" style = "color:red; border:1px solid red; padding: 2px;">
+					{{warn}}
+				</div>
+			</div>
+			
+			<div class="container d-lg-flex justify-content-center">
+				
+				
+			</div>
+			
+			<form>
+				<div class="form-group">
+				    <label for="SimulateType">
+				    	Choose Algorithm
+				    </label>
+				    <select class="form-control" id="SimulateType" v-model="type" >
+				      <option value="fcfs"  selected>
+				      	FCFS
+				      </option>
+				      
+				      <option value="round-robin">
+				      	STRF
+				      </option>
+					  <option value="sjf">
+				      	SJF
+				      </option>
+				    </select>
+				</div>
+				
+				<div class="form-group proccess" v-for="(proccess, index) in processes">
+					Proccess {{index+1}} :
+					<input name="arrive" type="number" class="form-control arrive-time" placeholder="Arrival Time" v-model="proccess.arrive" />
+					<input name="birth" type="number" class="form-control birth-time" placeholder="Proccessing Time" v-model="proccess.birth" />
+					<button type="button" class="btn btn-danger delete" v-on:click="deleteProccess(index)">
+						Delete Proccess
+					</button>
+				</div>
+				<div class="form-group">
+					<label id="label" for="">No. of Process: </label>
+					<input type="number" id = "num" class="arrive-time form-control" style="display: inline-block;" value="1"/>
+					<button id="button" type="button" class="btn btn-insert " v-on:click="create_process()" style = "color:black">Create</button>
+					<button type="submit" class="btn btn-sm btn-info float-right" v-on:click = "window.location.reload();"><i class="fa fa-refresh"></i></button>
+					<p id="check"></p>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<button type="button" class="btn btn-sm btn-info form-control" v-on:click="simulate()">
+						Start
+					</button>
+				</div>
+			</form>
+			<div class="container">
+			  <div class="row">
+			    <div class="col" v-show="arrivalTime!=null">
+					<data class="title">
+						Average Arrival Time : {{arrivalTime}}
+					</data>
+			    </div>
+			    <div class="col"></div>
+			    <div class="col" v-show="completionTime!=null">
+			      	<data class="title">
+			      		Average Completion Time : {{completionTime}}
+			      	</data>
+			    </div>
+			  </div>
+			  <div class="row">
+			    <div class="col" v-show="completionTime!=null">
+			     	<data class="title">
+			     		Average Completion Time : {{completionTime}}
+			     	</data>
+			    </div>
+			    <div class="col"></div>
+			    <div class="col" v-show="burstTime!=null">
+					<data class="title">
+						Average Burst Time : {{burstTime}}
+					</data>
+			    </div>
+			  </div>
+			  <div class="row">
+			  	<div class="col"></div>
+			    <div class="col" v-show="turnAroundTime!=null">
+					<data class="title">
+						Average Turn Around Time : {{turnAroundTime}}
+					</data>
+			    </div>
+			    <div class="col"></div>
+			  </div>
+			</div>
+		</div>
+		<div class="chart">
+			<canvas id="chart"></canvas>
+		</div>
+		<script type="text/javascript" src="assets/scripts/vue.js"></script>
+		<script type="text/javascript" src="assets/scripts/Chart.bundle.min.js"></script>
+		<script type="text/javascript" src="assets/scripts/Chart.min.js"></script>
+		<script type="text/javascript" src="assets/scripts/index.js"></script>
+	</body>
+</html>
